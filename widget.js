@@ -2,7 +2,7 @@
 const WIDGET_CONTAINER_ID = "recommendations-widget";
 // ה-API Endpoint המלא כפי שקיבלנו מהדרישות:
 const API_URL =
-  "http://api.taboola.com/1.0/json/taboola-templates/recommendations.get?app.type=desktop&app.apikey=f9040ab1b9c802857aa783c469d0e0ff7e7366e4&count=4&source.type=video&source.id=214321562187&source.url=http://www.site.com/videos/214321562187.html";
+  "https://api.taboola.com/1.0/json/taboola-templates/recommendations.get?app.type=desktop&app.apikey=f9040ab1b9c802857aa783c469d0e0ff7e7366e4&count=4&source.type=video&source.id=214321562187&source.url=http://www.site.com/videos/214321562187.html";
 
 // 2. פונקציה לבקשת נתונים מה-API
 async function fetchRecommendations() {
@@ -51,7 +51,7 @@ function renderWidget(data) {
   recommendations.forEach((item) => {
     // המידע הדרוש לנו
     const linkUrl = item.url;
-    const imageUrl = item.thumbnail[0].url; // מתוך המערך thumbnail, ניקח את ה-URL הראשון
+    const imageUrl = item.thumbnail[0].url || "path/to/placeholder.jpg"; // מתוך המערך thumbnail, ניקח את ה-URL הראשון
     const title = item.name;
     const description = item.description; // יכול להיות שזה מה שנרצה להציג כטקסט הראשי
 
